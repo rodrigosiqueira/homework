@@ -18,6 +18,7 @@ int cacheTargetMap(struct dm_target * _target, struct bio * _blockIO)
 
 	_blockIO->bi_bdev = specificData->device->bdev;
 
+	//TAKE A LOOK HERE!!!! THE CORE OF THE PROJECT!!
 	if((_blockIO->bi_rw & WRITE) == WRITE)
 	{
 		printk(KERN_CRIT "\n cacheTargetMap: BIO is a write request ...");

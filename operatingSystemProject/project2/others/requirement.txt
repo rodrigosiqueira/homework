@@ -1,0 +1,25 @@
+1 - Objective
+	* Create somekind of cache with device-mapper.
+
+2 - Requirement (functional)
+	+ Create a small cache that will be associate with backing storage.
+		- The cache must be a small than the backing storage.
+		- If you wanna try to read some datas, the cache will be checked. 
+			If the data isn't in the cache, then it is necessary to fill the 
+			cache.
+		- If you try to write data, you must return only when the backing 
+			store is complitly finished (write through). I think that this is 
+			the case of write directly in the backing storage.
+		- If we try to write something that exists in the cache, then it is 
+			necessary to rewrite in the correct place in the backing storage
+			(write back).
+	+ You must to take care with the "way" that you will replace the data
+		on cache. For it, you myst the implement some rule like:
+			- FIFO
+			- LRU
+
+3 - Non functional requirement
+	+ You can use some metadata for address translation in the cached block.
+		- You can try to use Hash table, Search tree (B-tree), Journal(logging)
+	+ Write back, write around caching.
+	+ On-disk meta-data management.

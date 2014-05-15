@@ -1,0 +1,15 @@
+1 - The idea behind Device-mapper
+	+ The main idea is mapping block devices onto higher-level virtual block devices.
+		|PROCESSING DATA| <---> |VIRTUAL BLOCK DEVICES|----- passed to --> |BLOCK DEVICE|
+		- SOME EXAMPLE: LVM2, RAID, DM-CRYPT
+
+2 - Mapped device
+	* Works by passing data from a virtual block device to another block device.
+
+3 - Mapped device
+	* Logical device provided by device-mapper drive.
+
+4 - Mapping table
+	* Represents a mapping from a mapped device to target device. Can include the 
+		starting addres, lenght and the target device information.
+
