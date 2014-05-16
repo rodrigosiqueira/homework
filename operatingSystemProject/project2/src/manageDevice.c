@@ -29,10 +29,13 @@ int initCacheFake(void)
 {
 	int result = 0;
 	result = dm_register_target(&cacheFakeTarget);
+
 	if (result < 0)
 	{
 		printk(KERN_CRIT "\n Error in registering target \n");
 	}
+
+	printk(KERN_CRIT "\n Module has been <<INSERTED>>.");
 
 	return 0;
 }
@@ -40,6 +43,8 @@ int initCacheFake(void)
 void cleanupCacheFake(void)
 {
 	dm_unregister_target(&cacheFakeTarget);
+
+	printk(KERN_CRIT "\n Module has been <<REMOVED>>.");
 
 	return;
 }

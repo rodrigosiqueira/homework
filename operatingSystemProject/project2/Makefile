@@ -31,5 +31,6 @@ uninstall:
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	rm -rf .[A-Za-z]*
 	rm -rf module/*
 	rm -rf bin/*
