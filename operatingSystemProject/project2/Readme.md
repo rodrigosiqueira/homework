@@ -19,3 +19,24 @@
 3 - Documentation
 	* This code has a Doxygen documentation.
 	* You can check a previously documentation in the folder others/DoxygenHTML/index.html
+
+============== IMPORTANT ============
+4 - How to use it.
+	a) Firstly insert the module:
+		-> ex.: insmod cacheFake.ko
+	b) Secondly of all we need to create a fake device (for safetly), following the steps below:
+		I) Create an empty file:
+			-> dd if=/dev/zero of=/tmp/store1 bs=1024 seek=2047 count=1
+		II) Make the file previouly created into a block device:
+			-> losetup /dev/loop1 /tmp/store1
+	c) Create the device with you new module
+		I) Create the new device target: 
+			-> echo 0 $(blockdev --getsize /dev/loop1) cacheFake /dev/loop1 0 | dmsetup create myCache
+		II) Create a filesystem: 
+			-> mke2fs /dev/mapper/myCache
+		III) Mount the file system:
+			-> mkdir /mnt/deviceMappeTest
+			-> mount /dev/mapper/myCache /mnt/deviceMappeTest
+
+
+

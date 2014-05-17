@@ -19,7 +19,7 @@ int cacheTargetMap(struct dm_target * _target, struct bio * _blockIO)
 	_blockIO->bi_bdev = specificData->device->bdev;
 
 	//TAKE A LOOK HERE!!!! THE CORE OF THE PROJECT!!
-	printk(KERN_CRIT "\n INSIDE OF bi_rw: %lu (%llu, %llu) - %llu\n", _blockIO->bi_rw, WRITE, (_blockIO->bi_rw & WRITE), READ);
+	printk(KERN_CRIT "\n INSIDE OF bi_rw: %lu (%llu)\n", _blockIO->bi_rw, WRITE);
 	if ((_blockIO->bi_rw & WRITE) == WRITE)
 	{
 		printk(KERN_CRIT "\n cacheTargetMap: <WRITE> request ...");
