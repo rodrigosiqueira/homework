@@ -1,0 +1,1 @@
+cmd_/home/rodrigo/Documents/Code/homework/operatingSystemProject/project2/cacheFake.o := ld -m elf_x86_64   -r -o /home/rodrigo/Documents/Code/homework/operatingSystemProject/project2/cacheFake.o /home/rodrigo/Documents/Code/homework/operatingSystemProject/project2/src/cacheTarget.o /home/rodrigo/Documents/Code/homework/operatingSystemProject/project2/src/manageDevice.o 

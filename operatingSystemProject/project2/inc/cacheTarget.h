@@ -6,14 +6,27 @@
 #ifndef _CACHE_TARGET_H_
 #define _CACHE_TARGET_H_
 
+#define CACHE_SIZE 4096
+
+#include <linux/list.h>
+
+typedef struct _fifoPolicy
+{
+	struct list_head list;
+	unsigned int position;
+	unsigned int size;
+}fifoPolicy;
+
 /**
 *	@struct cacheTarget
 *	@brief This data struct manager the device.
 */
 typedef struct _cacheTarget
 {
-	struct dm_dev * device;	/**< Device mapper.*/
-	sector_t start;					/**< Start of the sector.*/
+	struct dm_dev * device;			/**< Device mapper.*/
+	sector_t start;							/**< Start of the sector.*/
+	void * cacheDevice;					/**< Cache in the memory.*/
+	unsigned int cachePosition;	/**< Current position inside of the cache. cachePosition += sizeFile.*/
 }cacheTarget;
 
 /**
