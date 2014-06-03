@@ -1,0 +1,5 @@
+This command line is responsable for compile the file. 
+Attention to the flag "-L": after that you must to refer the correct library.w
+
+g++ testCode.c -o test -L /usr/lib/i386-linux-gnu/libGL.so -lGL -lGLU -lglut
+
