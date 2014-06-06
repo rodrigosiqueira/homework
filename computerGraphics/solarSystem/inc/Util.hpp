@@ -13,11 +13,11 @@
 class Vertice
 {
 	public:
-		int xCurrent;	/**< X position of our vertex.*/
-		int yCurrent;	/**< Y position of our vertex.*/
-		int zCurrent;	/**< Z position of our vertex.*/
-		double uTextureCoordinate;
-		double vTextureCoordinate;
+		int x;	/**< X position of our vertex.*/
+		int y;	/**< Y position of our vertex.*/
+		int z;	/**< Z position of our vertex.*/
+		double u;	/**< Texture coordinate.*/
+		double v;
 };
 
 #endif

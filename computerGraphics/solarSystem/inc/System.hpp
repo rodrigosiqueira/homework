@@ -7,19 +7,27 @@
 
 #include <vector>
 
+#include <Planet.hpp>
+
 /**
 *	@class System
 */
 class System
 {
-	private:
-		std::vector<Planet> planets;
+	private:	
+		static std::vector<Planet> planets;
+		void displayAllPlanets();
 		
 	public:
-		System(std::vector<Planet> _listOfPlanet);
+		System();
+
+		void addPlanet(Planet _planet);
 		void init(void);
-		void reshape(int _width, int _height);
-		void display(void);
+		//void reshape(int _width, int _height);
+		//void display(void);
+		static void updateAllPlanets(void);
 };
+
+//extern std::vector<Planet> System::planets;
 
 #endif

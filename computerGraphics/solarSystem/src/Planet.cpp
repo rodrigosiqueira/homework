@@ -6,14 +6,20 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <math.h>
+#include <stdio.h>
 #include <iostream>
+#include <string>
+
+#include <Planet.hpp>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846264338327950288
 #endif
 
-Planet::Planet(String _name)
+Planet::Planet(std::string _name)
 {
+	std::cout << "PLANET " << std::endl;
+	this->name = _name;
 	this->positionAngle = 0;
 	this->spaceBetweenVertices = 10;
 	this->totalAmountOfVertices = (90 / this->spaceBetweenVertices) * 
@@ -26,7 +32,7 @@ Planet::~Planet()
 	delete[] this->setOfAllVertices;
 }
 
-GLuint Planet::loadTexture(const char * _fileName)
+void Planet::loadTexture(const char * _fileName)
 {
 	GLuint texture;
 	int width = 0, height = 0;
@@ -34,18 +40,20 @@ GLuint Planet::loadTexture(const char * _fileName)
 
 	FILE * file = 0;
 
-	file = fopen(filename, "rb");
+	file = fopen(_fileName, "rb");
 	if(file == NULL)
 	{
-		return 0;
+		return;
 	}
+	
+	std::cout << "LOAD TEXTURE" << std::endl;
 
 	width = 1024;
 	height = 512;
 	data = (unsigned char *) malloc(width * height * 3);
 	fread(data, width * height * 3, 1, file);
 	fclose(file);
-	glGenerateTextures(1, &texture);
+	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -53,25 +61,28 @@ GLuint Planet::loadTexture(const char * _fileName)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
 	free(data);
-	return texture;
+
+	this->texture[0] = texture;
 }
 
-void Planet::displayPlanet(double _size, GUint _texture)
+void Planet::displayPlanet(double _size)
 {
+	std::cout << "INSIDE OF DISPLAY PLANET" << std::endl;
 	//Control which vertex we are currently working with
 	int b;
 	glScalef(0.0125 * _size, 0.0125 * _size, 0.0125 * _size);
 	glRotatef(90, 1, 0, 0);	//Rotating it.
-	glBindTexture(GL_TEXTURE_2D, _texture); //Bind the texture we inputted above
+	glBindTexture(GL_TEXTURE_2D, this->texture[0]); //Bind the texture we inputted above
 	glBegin(GL_TRIANGLE_STRIP); //Triangle strips as they are the faster shape for it
-	
+
+	std::cout << "BEFORE THE LOOP FOR ALL VERTICES" << std::endl;
 	//Looping through each vertex. This is just one half
 	for (b = 0; b <= this->totalAmountOfVertices; b++)
 	{
 		//Assign the texture coordinates of the current vertex
 		glTexCoord2f(this->setOfAllVertices[b].u, this->setOfAllVertices[b].v);
 		glVertex3f(this->setOfAllVertices[b].x, this->setOfAllVertices[b].y, 
-			-(this->setOfAllVertices[b].z);
+			-(this->setOfAllVertices[b].z));
 	}
 
 	//This is the second half of the sphere.
@@ -85,11 +96,12 @@ void Planet::displayPlanet(double _size, GUint _texture)
 	glEnd();
 }
 
-void Planet::createSphere(double _subdivion, _tHorizontal, _tVertical, _tZaxis)
+void Planet::createSphere(double _subdivion, double _tHorizontal, double _tVertical, double _tZaxis)
 {
 	int n = 0;
 	double a;
 	double b;
+	std::cout << "CRETATE SPHERE" << std::endl;
 	//Assign our b loop to go through 90 degrees in intervals of our variable space	
 	for(b = 0; b <= 90 - this->spaceBetweenVertices; b += this->spaceBetweenVertices)
 	{
@@ -99,6 +111,7 @@ void Planet::createSphere(double _subdivion, _tHorizontal, _tVertical, _tZaxis)
 			//Calculating X, Y and Z calculation
 			this->setOfAllVertices[n].x = _subdivion * sin((a) / 180 * M_PI) 
 						* sin((b) / 180 * M_PI) - _tHorizontal;
+
 			this->setOfAllVertices[n].y = _subdivion * cos((a) / 180 * M_PI) 
 						* sin((b) / 180 * M_PI) + _tVertical;
 			this->setOfAllVertices[n].z = _subdivion * cos((b) / 180 * M_PI) 
@@ -143,12 +156,16 @@ void Planet::createSphere(double _subdivion, _tHorizontal, _tVertical, _tZaxis)
 	}
 }
 
-void Planet::updateAngle(int _angle = 1)
+void Planet::updateAngle(int _angle)
 {
-	this->positionAngle += _angle;
+	std::cout << "UPDATE ANGLE" << std::endl;
+	this->positionAngle++;
+	std::cout << "ANGLE: " << this->positionAngle << std::endl;
 }
 
 int Planet::getAngle(void)
 {
+	std::cout << "GET ANGLE" << std::endl;
+	std::cout << "GET ANGLE: " << this->positionAngle << std::endl;
 	return this->positionAngle;
 }

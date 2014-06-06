@@ -6,6 +6,8 @@
 #ifndef _PLANET_HPP_
 #define _PLANET_HPP_
 
+#include <string>
+
 #include <GL/gl.h>
 #include <Util.hpp>
 
@@ -17,19 +19,19 @@ class Planet
 {
 	private:
 		int spaceBetweenVertices;
-		const int totalAmountOfVertices;
+		int totalAmountOfVertices;
 		Vertice * setOfAllVertices;
 		GLuint texture[1];
 		double positionAngle;
 
-		String name;
+		std::string name;
 		
 	public:
-		Planet(String _name);
+		Planet(std::string _name);
 		virtual ~Planet();
-		GLuint loadTexture(const char * _fileName);
-		void displayPlanet(double _size, GUint _texture);	//Note: displaySphere
-		void createSphere(double _subdivion, _tHorizontal, _tVertical, _tZaxis);
+		void loadTexture(const char * _fileName);
+		void displayPlanet(double _sizei);	//Note: displaySphere
+		void createSphere(double _subdivion, double _tHorizontal, double _tVertical, double _tZaxis);
 		void updateAngle(int _angle = 1);
 		int getAngle(void);
 };
