@@ -38,6 +38,36 @@ extern int ospReadDirectory(const char * _path, void * _buffer, fuse_fill_dir_t 
 extern int ospOpen(const char * _path, struct fuse_file_info * _fileInfo);
 
 /**
+* 
+*
+*/
+extern void * ospInit(struct fuse_conn_info * _connection);
+
+/**
+*
+*
+*/
+extern int ospOpenDirectory(const char * _path, struct fuse_file_info * _fileInformation);
+
+/**
+*
+*
+*/
+extern int ospMkdir(const char * _path, mode_t _mode);
+
+/**
+*
+*
+*/
+extern int ospRmdir(const char * _path);
+
+/**
+*
+*
+*/
+extern int ospCreateFile(const char * _path, mode_t _mode, struct fuse_file_info * _fileInfo);
+
+/**
 *	@param _path
 *	@param _buffer
 *	@param _size
