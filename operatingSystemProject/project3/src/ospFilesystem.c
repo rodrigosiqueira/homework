@@ -18,12 +18,25 @@
 
 #include <ospFilesystem.h>
 
+static void fullPath(const char * _path, char _filePath[PATH_MAX])
+{
+	strcpy(_filePath, OSPDATA->rootDirectory);
+	strncat(_filePath, _path, PATH_MAX);
+	logMessage("FULL PATH: %s, path: %s, filePath: %s", 
+			OSPDATA->rootDirectory, _path, _filePath);
+	
+	return;
+}
+
 int ospGetAttribute(const char * _path, struct stat * _statusBuffer)
 {
-	int res = 0;
+	int result = 0;
+	char filePath[PATH_MAX];
 
-	res = lstat(_path, _statusBuffer);
-	if(res == -1)
+	fullPath(_path, filePath);
+
+	result = lstat(_path, _statusBuffer);
+	if(result == -1)
 	{
 		return -errno;
 	}
@@ -34,96 +47,81 @@ int ospGetAttribute(const char * _path, struct stat * _statusBuffer)
 int ospReadDirectory(const char * _path, void * _buffer, fuse_fill_dir_t _filler, 
 	off_t _offset, struct fuse_file_info * _fileInfo)
 {
+	int returnStat = 0;
 	DIR * directoryPath = 0;
+	struct dirent * formatOfDirectory;
 
-	//struct dirent * direntExtern;
+	logMessage("\nREAD DIRECTORY: path = %s, buffer = 0x%08x, offset = %lld\n", _path, _buffer, _offset);
 
-	(void) _offset;
-	(void) _fileInfo;
+	directoryPath = (DIR*)(uintptr_t) _fileInfo->fh;
 
-	directoryPath = opendir(_path);
-	if(directoryPath == NULL)
+	formatOfDirectory = readdir(directoryPath);
+
+	if(formatOfDirectory == 0)
 	{
 		return -errno;
 	}
-	/*
-	while((direntExtern = readdir(directoryPath)) != NULL)
+	
+	do
 	{
-		struct stat status;
-		memset(&status, 0, sizeof(status));
-		status.st_ino = direntExtern->d_ino;
-		status.st_mode = direntExtern->d_type << 12;
-		if(_filler(_buffer, direntExtern->d_name, &status, 0))
+		if(_filler(_buffer, formatOfDirectory->d_name, NULL, 0) != 0)
 		{
-			break;
+			logMessage("ERROR WHEN TRY TO READ THE BUFFER");
+			return -ENOMEM;
 		}
-	}
-	closedir(directoryPath);
-	*/
-	_filler(_buffer, ".", NULL, 0);
-	_filler(_buffer, "..", NULL, 0);
-	_filler(_buffer, _path + 1, NULL, 0);
+	}while((formatOfDirectory = readdir(directoryPath)) != NULL);
+
+	logFileInformation(_fileInfo);
+	
 	return 0;
 }
 
 int ospOpen(const char * _path, struct fuse_file_info * _fileInfo)
 {
-	int res = 0;
+	int fileDescriptor = 0;
+	char filePath[PATH_MAX];
+	
+	fullPath(_path, filePath);
 
-	res = open(_path, _fileInfo->flags);
-	if(res == -1)
+	fileDescriptor = open(filePath, _fileInfo->flags);
+	if(result == -1)
 	{
+		logMessage("Error when try to open.");
 		return -errno;
 	}
 
-	close(res);
+	_fileInfo->fh = fileDescriptor;
+	logFileInformation(_fileInfo);
+
 	return 0;
 }
 
 int ospRead(const char * _path, char * _buffer, size_t _size, off_t _offset, 
 	struct fuse_file_info * _fileInfo)
 {
-	int fileDescriptor = 0;
-	int res = 0;
+	int totalByte = 0;
 
-	(void) _fileInfo;
-	fileDescriptor = open(_path, O_RDONLY);
-	if(fileDescriptor == -1)
+	totalByte = pread(_fileInfo->fileDescriptor, _buffer, _size, _offset);
+	if(totalByte == -1)
 	{
 		return -errno;
 	}
 
-	res = pread(fileDescriptor, _buffer, _size, _offset);
-	if(res == -1)
-	{
-		return -errno;
-	}
-
-	close(fileDescriptor);
-	return res;
+	return totalByte;
 }
 
 int ospWrite(const char * _path, const char * _buffer, size_t _size, off_t _offset,
 	struct fuse_file_info * _fileInfo)
 {
-	int fileDescriptor = 0;
-	int res = 0;
+	int totalByte = 0;
 
-	(void) _fileInfo;
-	fileDescriptor = open(_path, O_WRONLY);
-	if(fileDescriptor == -1)
+	totalByte =  pwrite(fileDescriptor, _buffer, _size, _offset);
+	if(totalByte == -1)
 	{
-		return -errno;
+		totalByte = -errno;
 	}
 
-	res = pwrite(fileDescriptor, _buffer, _size, _offset);
-	if(res == -1)
-	{
-		res = -errno;
-	}
-
-	close(fileDescriptor);
-	return res;
+	return totalByte;
 }
 
 static struct fuse_operations ospOperations = 

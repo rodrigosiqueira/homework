@@ -10,10 +10,15 @@ CSOURCE = $(wildcard src/*c)
 
 all: ospFilesystem
 
-ospFilesystem: $(CSOURCE)
-	$(CC) $< $(FUSEFLAG)-o bin/$@ -I./inc
+ospFilesystem: $(CSOURCE:src/%.c=obj/%.o)
+	$(CC) obj/*.o $(FUSEFLAG)-o bin/$@ -I./inc
+
+obj/%.o: src/%.c
+	$(CC) -c $< -o $@ $(FUSEFLAG) -I./inc
 
 .PHONY: clean
 
 clean:
 	rm -rf bin/*
+	fusermount -u temp
+	mkdir bin/temp
