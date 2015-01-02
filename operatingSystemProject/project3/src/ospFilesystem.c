@@ -142,7 +142,6 @@ int ospWrite(const char * _path, const char * _buffer, size_t _size, off_t _offs
 int ospOpenDirectory(const char * _path, struct fuse_file_info * _fileInformation)
 {
 	DIR * directoryPath = 0;
-	int returnStat = 0;
 	char filePath[PATH_MAX];
 
 	logMessage("\n OPEN DIRECTORY: path = %s, file information: %s  \n", _path, _fileInformation);
@@ -160,7 +159,7 @@ int ospOpenDirectory(const char * _path, struct fuse_file_info * _fileInformatio
 
 	logFileInformation(_fileInformation);
 
-	return returnStat;
+	return 0;
 }
 
 int ospMkdir(const char * _path, mode_t _mode)

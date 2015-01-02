@@ -47,6 +47,7 @@ kgpu/.tmp_versions/
 *.pot
 *.pyc
 *.pyo
+python/basicProject/wiki/html/*
 
 #Ruby
 *.rbc

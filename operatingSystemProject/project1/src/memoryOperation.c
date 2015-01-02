@@ -11,8 +11,8 @@
 #include <linux/kernel.h>
 #include <linux/cdev.h>
 
-#include "inc/memoryOperation.h"
-#include "inc/virtualMemoryOperation.h"
+#include "../inc/memoryOperation.h"
+#include "../inc/virtualMemoryOperation.h"
 
 /**
 *	@var majorMemory

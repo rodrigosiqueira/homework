@@ -5,6 +5,7 @@ MODULEPACK	= module/
 
 DEBFLAG	=	-O2
 CFLAG		+= $(DEBFLAG) -I$(LDDINCDIR)
+PWD := $(shell pwd)
 
 fakeMemory-objs := src/memoryOperation.o src/virtualMemoryOperation.o
 obj-m	:= fakeMemory.o 
@@ -12,7 +13,7 @@ obj-m	:= fakeMemory.o
 all: makeStuffs cleanResult
 
 makeStuffs:
-	make -C $(INCFLAG) /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 cleanResult:
 	mv *.ko module/

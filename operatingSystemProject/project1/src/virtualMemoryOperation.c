@@ -9,7 +9,7 @@
 #include <linux/mm.h>
 #include <linux/fs.h>
 
-#include "inc/virtualMemoryOperation.h"
+#include "../inc/virtualMemoryOperation.h"
 /**
 *	@var
 *	@brief
@@ -97,7 +97,7 @@ int pageMmap(struct file * _file, struct vm_area_struct * _vma)
 	{
 		_vma->vm_flags |= VM_IO;
 	}
-	_vma->vm_flags |= VM_RESERVED;
+	_vma->vm_flags |= (VM_IO | VM_LOCKED | (VM_DONTEXPAND | VM_DONTDUMP));
 
 	_vma->vm_ops = &virtualMemoryOperations;
 	virtualMemoryOpen(_vma);

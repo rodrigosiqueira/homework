@@ -1,0 +1,29 @@
+Teste
+=begin Must to work well...
+Comment...
+=end
+Texto
+=begin
+I expect this code can be read.
+Again... 
+=end
+FALHA!!!
+  =begin
+NOooo.... your regex isn't good... :(
+=end
+  =begin
+Nooooo... your regex fail... ;(
+=end
+xpto=begin
+No, no, no, no... faillllllll =(
+=end
+xpto =begin
+aaaggghhhh... faiillllll :[
+=end
+FALHAR!!!
+=begin
+fail, fail, fail, faillllll
+ =end
+FALHAR!!!
+=begin fail, fail... =end
+

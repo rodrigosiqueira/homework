@@ -1,0 +1,4 @@
+http://ftp.gnu.org/gnu/binutils/binutils-2.23.1.tar.bz2
+http://ftp.gnu.org/gnu/gcc/gcc-4.4.3/gcc-4.4.3.tar.bz2
+http://ufpr.dl.sourceforge.net/project/devkitpro/sources/newlib/newlib-2.0.0.tar.gz
+ftp://sourceware.org/pub/insight/releases/insight-6.8a.tar.bz2

@@ -1,0 +1,4 @@
+http://commondatastorage.googleapis.com/git-repo-downloads/repo
+https://alioth.debian.org/frs/download.php/file/3977/minicom-2.7.tar.gz
+http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1204/x86_64/cuda-repo-ubuntu1204_5.5-0_amd64.deb
+http://download.videolan.org/pub/videolan/vlc/2.1.4/vlc-2.1.4.tar.xz
