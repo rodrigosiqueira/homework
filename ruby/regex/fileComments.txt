@@ -1,29 +1,30 @@
-Teste
-=begin Must to work well...
+Test
+=begin Should work well...
 Comment...
 =end
-Texto
+Text
 =begin
 I expect this code can be read.
 Again... 
 =end
-FALHA!!!
+FAILLL!!!
   =begin
 NOooo.... your regex isn't good... :(
 =end
   =begin
 Nooooo... your regex fail... ;(
 =end
+againn
 xpto=begin
 No, no, no, no... faillllllll =(
 =end
 xpto =begin
 aaaggghhhh... faiillllll :[
 =end
-FALHAR!!!
+FAIL!!!
 =begin
 fail, fail, fail, faillllll
  =end
-FALHAR!!!
+FAIL!!!
 =begin fail, fail... =end
 
