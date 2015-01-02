@@ -1,0 +1,24 @@
+First case
+
+class NormalDeclaration
+end
+
+class   WithTabeAfterClass
+end
+
+class     WithNSpacesAfterClass
+end
+
+class SpaceAfterClassName      
+end
+
+Second case
+
+ class WithSpaceBeforeClass
+end
+
+  class WithTabeAfterClass
+end
+
+xptoclass WithClassAsSubstring
+end
