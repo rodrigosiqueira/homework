@@ -6,5 +6,6 @@ puts("")
 puts(strFile)
 puts("="*50)
 puts("One by one")
-x = strFile.scan(/[^ \t](=begin[.\n]*)(((?!\1).[\n]?)*)([^ \t]=end)/)
+x = strFile.scan(/^=begin(.*?)^=end/m)
 puts(x)
+print x
