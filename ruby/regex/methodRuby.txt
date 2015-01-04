@@ -1,0 +1,9 @@
+class Test
+  def get_method
+  end
+  
+  def get_method(x)
+    puts(x)
+  end
+
+end

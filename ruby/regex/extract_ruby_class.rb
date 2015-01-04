@@ -1,12 +1,3 @@
-file = File.open("classRuby.txt", "rb")
-strFile = file.read
-puts("="*50)
-puts("\t *** Row file: ***")
-puts("")
-puts(strFile)
-puts("="*50)
-puts("One by one")
-strFile.scan(/\bclass\b\b[ |\t]+\s*(.*)\b/).each do |t|
-  print(t)
-end
+require_relative 'apply_regex'
 
+executeRegexUnderFile("classRuby.txt", /\bclass\b\b[ |\t]+\s*(.*)\b/)
