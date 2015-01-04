@@ -1,23 +1,26 @@
 AS = arm-linux-as
 LD = arm-linux-ld
-OJ = arm-linux-objcopy
+OBJCOPY = arm-linux-objcopy
 
-AS_FLAGS = -mcpu=arm9tdmi --gdwarf2 -o
-OJ_FLAGS = -O binary -S
+ASFLAGS = -mcpu=arm9tdmi --gdwarf2 -o
+OBJCOPYFLAGS = -O binary -S
 
-all: LED_SHIFT_BIN
+all: led_shift.bin turn_on.bin
 
-LED_SHIFT_BIN: LED_SHIFT
-	$(OJ) $(OJ_FLAGS) $^ $@
+led_shift.bin: led_shift.o
+	$(OBJCOPY) $(OBJCOPYFLAGS) $^ $@
 
-LED_SHIFT: LED DELAY
+turn_on.bin: turnOn.asm
+	$(AS) $(ASFLAGS) $@ $^
+
+led_shift.o: led.o delay.o
 	$(LD) -o $@ $^
 
-LED:
-	$(AS) $(AS_FLAGS) $@ led_shift.asm
+led.o:
+	$(AS) $(ASFLAGS) $@ led_shift.asm
 
-DELAY:
-	$(AS) $(AS_FLAGS) $@ delay.asm
+delay.o:
+	$(AS) $(ASFLAGS) $@ delay.asm
 
-clr:
-	rm LED DELAY LED_SHIFT LED_SHIFT_BIN
+clean:
+	rm -rf *.o *.bin

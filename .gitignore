@@ -36,6 +36,7 @@
 *.symvers
 *.o.cmd
 *.ko.cmd
+*.bin
 
 #Paths
 /other

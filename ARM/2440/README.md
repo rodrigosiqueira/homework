@@ -30,7 +30,7 @@ Basically, you can find some assembly code and C code for handling this device.
 
 ## Install and configure minicom
 
-* Intall minicom:
+* Install minicom:
   * sudo apt-get install minicom
 * Configure minicom:
   * minicom -s
@@ -38,3 +38,14 @@ Basically, you can find some assembly code and C code for handling this device.
   * Change "Serial Device" to /dev/ttyUSB0 (or ttyUSB1)
   * Change "Bps/Par/Bits" to 115200 8N1
   * Finally Hardware and Software flow control must be "No"
+
+## Download application to the kit
+
+* First of all, make sure that you have connected the rs232 and usb cabe. Then:
+ * Open the terminal and type: sudo minicom
+ * Put the key to NOR mode, and turn on the kit
+* You will see the "supervivi" terminal. You can use:
+ * a: use to download the binary to the memory.
+ * d: use d to clean the memory and download you binary.
+* Finally, in other terminal execute:
+ * usbpush /your/binary/to/download
