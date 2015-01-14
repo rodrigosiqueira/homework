@@ -25,11 +25,8 @@ int * generateRandomMatrix(const unsigned char _width,
   {
     cicles = clock();
     srandom(cicles);
-    *(matrix + i) = ((int)random()) % 0xffff;
-    (!(i % _width)) ? printf("\n") : printf("\t");
-    printf("%d", *(matrix + i));
+    *(matrix + i) = ((int)random()) % 0xff;
   }
-  printf("\n"); 
   return matrix;
 }
 
@@ -59,7 +56,7 @@ void dotProduct(const int * _matrixA, const int * _matrixB,
       sum = 0;
       for(k = 0; k < _width; k++)
       {
-        elementA = *(_matrixA + (j*_width + k));     //Go accross the line
+        elementA = *(_matrixA + (i*_width + k));     //Go accross the line
         elementB = *(_matrixB + (j + k*_width));     //Go accross the column
         sum += (elementA * elementB);   //Take each element
       }

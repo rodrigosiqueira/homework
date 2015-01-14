@@ -13,4 +13,6 @@ dot_product: $(CSOURCES:src/%.c=obj/%.o)
 obj/%.o: src/%.c
 	gcc -c $< -o $@ -I./inc
 
-
+clean:
+	rm -rf obj/*
+	rm -rf bin/*
