@@ -46,3 +46,25 @@ int * emptyMatrix(const unsigned char _width,
   return newMatrix;
 }
 
+void dotProduct(const int * _matrixA, const int * _matrixB, 
+                int * _result, const unsigned char _width)
+{
+  int i, j, k, sum, elementA, elementB;
+  i = j = k = sum = elementA, elementB = 0;
+
+  for (i = 0; i < _width; i++)
+  {
+    for(j = 0; j < _width; j++)
+    {
+      sum = 0;
+      for(k = 0; k < _width; k++)
+      {
+        elementA = *(_matrixA + (j*_width + k));     //Go accross the line
+        elementB = *(_matrixB + (j + k*_width));     //Go accross the column
+        sum += (elementA * elementB);   //Take each element
+      }
+      *(_result + (_width*i + j)) = sum;
+    }
+  }
+}
+

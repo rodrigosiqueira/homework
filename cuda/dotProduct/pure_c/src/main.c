@@ -19,7 +19,7 @@ int main (int argc, char ** argv)
   int * matrixB = generateRandomMatrix(width, width);
   int * result = emptyMatrix(width, width);
 
-  //dotProduct(matrixA, matrixB, result, width);
+  dotProduct(matrixA, matrixB, result, width);
 
   return 0; 
 }
