@@ -6,14 +6,16 @@
 #include <stdlib.h>
 
 #include "dataType.h"
+#include "handleNumber.h"
 
 int * generateRandomMatrix(const unsigned char _width,
                           const unsigned char _height)
 {
-  int * matrix = (int *)malloc(sizeof(int) * _width * _height);
+  int * matrix = NULL;
   unsigned long int cicles = 0;
   register int i = 0;
-
+  
+  matrix = emptyMatrix(_width, _height);
   if (!matrix)
   {
     return NULL;
@@ -31,4 +33,16 @@ int * generateRandomMatrix(const unsigned char _width,
   return matrix;
 }
 
+
+int * emptyMatrix(const unsigned char _width, 
+                  const unsigned char _height)
+{
+  int * newMatrix = (int *) malloc(sizeof(int) * _width * _height);
+  if (!newMatrix)
+  {
+    return NULL;
+  }
+
+  return newMatrix;
+}
 

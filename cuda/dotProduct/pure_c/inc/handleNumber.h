@@ -12,6 +12,15 @@
 *       each element of the matrix is generated randomly.
 */
 extern int * generateRandomMatrix(const unsigned char _width, 
-                                   const unsigned char _height);
+                                  const unsigned char _height);
+
+/**
+* @param _width Width of matrix.
+* @param _height Height of matrix.
+* @return Return a reference of allocated matrix.
+* @brief Create an empty matrix.
+*/
+extern int * emptyMatrix(const unsigned char _width, 
+                         const unsigned char _height);
 
 #endif

@@ -14,7 +14,12 @@ int main (int argc, char ** argv)
   int width = atoi(argv[1]);
   int height = atoi(argv[2]);
 
-  generateRandomMatrix(width, height);
+  //For simplicity, just consider width = height
+  int * matrixA = generateRandomMatrix(width, width);
+  int * matrixB = generateRandomMatrix(width, width);
+  int * result = emptyMatrix(width, width);
+
+  //dotProduct(matrixA, matrixB, result, width);
 
   return 0; 
 }
