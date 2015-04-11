@@ -1,0 +1,3 @@
+NET "keyA" LOC = "A10";
+NET "keyB" LOC = "D14";
+NET "ledOut" LOC = "L14";

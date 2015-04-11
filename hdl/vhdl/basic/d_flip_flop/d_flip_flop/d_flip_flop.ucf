@@ -1,0 +1,4 @@
+NET "d" LOC = "P15";
+NET "clock" LOC = "L15";
+NET "reset" LOC = "F5";
+NET "Q" LOC = "L14";
