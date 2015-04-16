@@ -172,8 +172,7 @@ local.properties
 *.xbcd
 *.vdbl
 *.vdbx
-
-
+hdl/*.xml
 
 *.rbc
 capybara-*.html
