@@ -28,6 +28,7 @@ bool writePPM(const unsigned char * buf,
 void drawBlackFrame(agg::rendering_buffer& rbuf)
 {
   unsigned i = 0;
+  //Set lines on left and right.
   for (i = 0; i < rbuf.height(); ++i)
   {
     unsigned char * p = rbuf.row_ptr(i);
@@ -40,7 +41,8 @@ void drawBlackFrame(agg::rendering_buffer& rbuf)
     *p++ = 0;
     *p++ = 0;
   }
-  memset(rbuf.row_ptr(0), 0, rbuf.width() * 3);
+  //Set lines on top and bottom
+  memset(rbuf.row_ptr(0), 128, rbuf.width() * 3);
   memset(rbuf.row_ptr(rbuf.height() - 1), 0, rbuf.width() * 3);
 }
 
@@ -52,7 +54,7 @@ int main()
   agg::rendering_buffer rbuf(buffer,
                             frameWidth,
                             frameHeight,
-                            -frameWidth * 3);
+                            frameWidth * 3);
   unsigned i;
 
   //Draw the outer black frame
@@ -62,7 +64,6 @@ int main()
               frameWidth - 40,
               frameHeight - 40,
               -frameWidth * 3);
-  
   for(i = 0; i < rbuf.height() / 2; ++i)
   {
     //Get the pointer to the beginning of the i-th row (Y-coordinate)
