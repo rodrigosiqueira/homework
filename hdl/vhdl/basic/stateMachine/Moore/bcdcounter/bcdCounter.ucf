@@ -1,0 +1,10 @@
+# onBoard Leds
+ NET count<0> LOC = "U18";
+ NET count<1> LOC = "M14";
+ NET count<2> LOC = "N14";
+ NET count<3> LOC = "L14";
+ 
+ # onBoard SWITCHES
+ NET rst LOC = "F5";
+  
+ NET "clk" LOC = "L15";

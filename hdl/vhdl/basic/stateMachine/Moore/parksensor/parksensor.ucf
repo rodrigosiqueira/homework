@@ -1,0 +1,12 @@
+# onBoard Leds
+ NET vacancy<0> LOC = "U18";
+ NET vacancy<1> LOC = "M14";
+ NET vacancy<2> LOC = "N14";
+ NET vacancy<3> LOC = "L14";
+ 
+ # onBoard SWITCHES
+ NET sensor_1 LOC = "A10";
+ NET sensor_2 LOC = "D14";
+ NET rst LOC = "F5";
+ 
+ NET "clk" LOC = "L15";

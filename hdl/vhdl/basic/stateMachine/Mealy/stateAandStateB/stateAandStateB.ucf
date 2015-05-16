@@ -1,0 +1,4 @@
+NET "d" LOC = "P3";
+NET "clk" LOC = "L15";
+NET "rst" LOC = "F5";
+NET "x" LOC = "L14";

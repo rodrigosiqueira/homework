@@ -1,0 +1,16 @@
+# onBoard Leds
+ NET x<0> LOC = "U18";
+ NET x<1> LOC = "M14";
+ NET x<2> LOC = "N14";
+ NET x<3> LOC = "L14";
+ NET x<4> LOC = "M13";
+ NET x<5> LOC = "D4";
+ NET x<6> LOC = "P16";
+ NET x<7> LOC = "N12";
+ 
+ # onBoard SWITCHES
+ NET sel<0> LOC = "A10";
+ NET sel<1> LOC = "D14";
+ NET sel<2> LOC = "C14";
+ NET enable LOC = "P12";
+ 
