@@ -195,6 +195,10 @@ hdl/**/*.dbg
 hdl/**/*.cmd
 hdl/**/*.didat
 hdl/**/*.tcl
+hdl/**/*.cgp
+hdl/**/*.asy
+hdl/**/*.sym
+hdl/**/*.xco
 hdl/**/lockfile
 hdl/**/pn_info
 

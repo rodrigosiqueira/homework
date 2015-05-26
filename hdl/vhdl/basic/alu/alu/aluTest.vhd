@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   17:38:35 05/17/2015
+-- Create Date:   10:40:58 05/26/2015
 -- Design Name:   
--- Module Name:   /home/rodrigo/Documents/Code/homework/hdl/vhdl/basic/stateMachine/Moore/simpleFSM/simpleFSM/tb_simpleFSM.vhd
--- Project Name:  simpleFSM
+-- Module Name:   /home/rodrigo/Documents/Code/homework/hdl/vhdl/basic/alu/alu/aluTest.vhd
+-- Project Name:  alu
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: simpleFSM
+-- VHDL Test Bench Created by ISE for module: alu
 -- 
 -- Dependencies:
 -- 
@@ -32,57 +32,53 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY tb_simpleFSM IS
-END tb_simpleFSM;
+ENTITY aluTest IS
+END aluTest;
  
-ARCHITECTURE behavior OF tb_simpleFSM IS 
+ARCHITECTURE behavior OF aluTest IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT simpleFSM
+    COMPONENT alu
     PORT(
-         a : IN  BIT;
-         b : IN  BIT;
-         d : IN  BIT;
-         clk : IN  BIT;
-         rst : IN  BIT;
-         x : OUT  BIT
+         a : IN  std_logic_vector(7 downto 0);
+         b : IN  std_logic_vector(7 downto 0);
+         cin : IN  std_logic;
+         sel : IN  std_logic_vector(3 downto 0);
+         y : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal a : bit := '0';
-   signal b : bit  := '0';
-   signal d : bit  := '0';
-   signal clk : bit  := '0';
-   signal rst : bit  := '0';
+   signal a : std_logic_vector(7 downto 0) := (others => '0');
+   signal b : std_logic_vector(7 downto 0) := (others => '0');
+   signal cin : std_logic := '0';
+   signal sel : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
-   signal x : bit;
-
-   -- Clock period definitions
-   constant clk_period : time := 10 ns;
+   signal y : std_logic_vector(7 downto 0);
+   -- No clocks detected in port list. Replace <clock> below with 
+   -- appropriate port name 
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: simpleFSM PORT MAP (
+   uut: alu PORT MAP (
           a => a,
           b => b,
-          d => d,
-          clk => clk,
-          rst => rst,
-          x => x
+          cin => cin,
+          sel => sel,
+          y => y
         );
-		  
-	clk <= not clk after 5 ns;
+ 
+	--
+	--a <=	'0000000' after 45 ns, 
+	--		'1' after 145 ns,
+	--		'1' after 245 ns,
+	--		'0' after 345 ns,
+	--		'0' after 445 ns,
+	--		'0' after 545 ns,
+	--		'1' after 645 ns;
 
-	d <=	'0' after 45 ns, 
-			'1' after 145 ns,
-			'1' after 245 ns,
-			'0' after 345 ns,
-			'0' after 445 ns,
-			'0' after 545 ns,
-			'1' after 645 ns;
 END;

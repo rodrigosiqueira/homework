@@ -25,7 +25,7 @@ static const char *ng0 = "/home/rodrigo/Documents/Code/homework/hdl/vhdl/basic/s
 
 
 
-static void work_a_1612435200_3212880686_p_0(char *t0)
+static void work_a_3372450399_3212880686_p_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -107,7 +107,7 @@ LAB7:    t2 = (t0 + 1512U);
 
 }
 
-static void work_a_1612435200_3212880686_p_1(char *t0)
+static void work_a_3372450399_3212880686_p_1(char *t0)
 {
     char *t1;
     char *t2;
@@ -215,9 +215,9 @@ LAB8:    xsi_set_current_line(49, ng0);
 }
 
 
-extern void work_a_1612435200_3212880686_init()
+extern void work_a_3372450399_3212880686_init()
 {
-	static char *pe[] = {(void *)work_a_1612435200_3212880686_p_0,(void *)work_a_1612435200_3212880686_p_1};
-	xsi_register_didat("work_a_1612435200_3212880686", "isim/simpleFSM_isim_beh.exe.sim/work/a_1612435200_3212880686.didat");
+	static char *pe[] = {(void *)work_a_3372450399_3212880686_p_0,(void *)work_a_3372450399_3212880686_p_1};
+	xsi_register_didat("work_a_3372450399_3212880686", "isim/tb_simpleFSM_isim_beh.exe.sim/work/a_3372450399_3212880686.didat");
 	xsi_register_executes(pe);
 }
