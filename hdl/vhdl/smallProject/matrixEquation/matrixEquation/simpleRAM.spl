@@ -1,0 +1,8 @@
+[Inputs]
+writeEnable
+clk
+=address[3:0]=
+=dataIn[15:0]=
+=dataOut[15:0]=
+[Outputs]
+[BiDir]

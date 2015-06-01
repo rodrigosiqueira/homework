@@ -1,0 +1,10 @@
+[Inputs]
+reset
+clk
+startPort
+=aPort[15:0]=
+=bPort[15:0]=
+[Outputs]
+readyPort
+=outputPort[15:0]=
+[BiDir]
