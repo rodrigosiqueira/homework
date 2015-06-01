@@ -12,12 +12,12 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE work.dataTypes.ALL;
 
 ENTITY lineColumnOperation IS
-	PORT (lineElement1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			lineElement2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			lineElement3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			columnElement1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			columnElement2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			columnElement3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+	PORT (elementA1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+			elementA2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+			elementA3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+			elementB1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+			elementB2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+			elementB3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 			startPort : IN STD_LOGIC;
 			resetPort : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
@@ -97,10 +97,10 @@ BEGIN
 							startMultiplyTwo <= '1';
 							startAdd <= '0';
 							-- Input
-							elementLine1 <= lineElement1;
-							elementLine2 <= lineElement2;
-							elementColumn1 <= columnElement1;
-							elementColumn2 <= columnElement2;
+							elementLine1 <= elementA1;
+							elementLine2 <= elementA2;
+							elementColumn1 <= elementB1;
+							elementColumn2 <= elementB2;
 							-- Next state
 							presentState <= twoMultiplication;
 						END IF;
@@ -116,8 +116,8 @@ BEGIN
 							-- Input
 							sumA <= resultMultOne;
 							sumB <= resultMultTwo;
-							elementLine1 <= lineElement3;
-							elementColumn1 <= columnElement3;
+							elementLine1 <= elementA3;
+							elementColumn1 <= elementB3;
 							-- Next state
 							presentState <= multiplicationSum;
 						ELSE

@@ -38,36 +38,17 @@ PACKAGE dataTypes IS
 	
 	-- Line column operator
 	COMPONENT lineColumnOperation
-		PORT ( lineElement1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-				 lineElement2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-				 lineElement3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-				 columnElement1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-				 columnElement2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-				 columnElement3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+		PORT ( elementA1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+				 elementA2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+				 elementA3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+				 elementB1 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+				 elementB2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+				 elementB3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 				 startPort : IN STD_LOGIC;
 				 resetPort : IN STD_LOGIC;
 				 clk : IN STD_LOGIC;
 				 resultPort : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 				 readyPort : OUT STD_LOGIC);
-	END COMPONENT;
-	
-	-- ROM MATRIX
-	COMPONENT romMatrix
-		PORT ( address : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-				 data : OUT STD_LOGIC_VECTOR (15 DOWNTO 0));
-	END COMPONENT;
-	
-	-- SIMPLE RAM MEMORY
-	COMPONENT simpleRAM
-		GENERIC ( bits : INTEGER := 16;
-				 word : INTEGER := 16);
-
-		PORT ( writeEnable : IN STD_LOGIC;
-				 clk : IN STD_LOGIC;
-				 address : IN INTEGER RANGE 0 DOWNTO word - 1;
-				 dataIn : IN STD_LOGIC_VECTOR (bits - 1 DOWNTO 0);
-				 dataOut : IN STD_LOGIC_VECTOR (bits - 1 DOWNTO 0)
-				);
 	END COMPONENT;
 	
 	-- MATRIX 2 X 2 ADDITION
