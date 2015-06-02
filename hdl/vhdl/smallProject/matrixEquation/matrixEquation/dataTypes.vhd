@@ -54,23 +54,34 @@ PACKAGE dataTypes IS
 	-- MATRIX 2 X 2 ADDITION
 	COMPONENT matrix2by2Addition
 		PORT ( element00A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 element01A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 element10A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 element11A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element01A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element10A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element11A : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
 
-			 element00B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 element01B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 element10B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 element11B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element00B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element01B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element10B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 element11B : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
 
-			 clk : IN STD_LOGIC;
-			 reset : IN STD_LOGIC;
-			 start : IN STD_LOGIC;
-			 ready : OUT STD_LOGIC;
+				 clk : IN STD_LOGIC;
+				 reset : IN STD_LOGIC;
+				 start : IN STD_LOGIC;
+				 ready : OUT STD_LOGIC;
 
-			 result00 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 result01 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 result10 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-			 result11 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0));
+				 result00 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 result01 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 result10 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+				 result11 : OUT STD_LOGIC_VECTOR (15 DOWNTO 0));
+	END COMPONENT;
+	
+	COMPONENT multiplyMatrix
+		PORT (input : IN STD_LOGIC_VECTOR(47 DOWNTO 0);
+				mutiplyType : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+				readInput : IN STD_LOGIC;
+				clkMult : IN STD_LOGIC;
+				resetMult : IN STD_LOGIC;
+				startMultiply : IN STD_LOGIC;
+				output : OUT STD_LOGIC_VECTOR(95 DOWNTO 0);
+				readyMultiply : OUT STD_LOGIC);
 	END COMPONENT;
 END dataTypes;

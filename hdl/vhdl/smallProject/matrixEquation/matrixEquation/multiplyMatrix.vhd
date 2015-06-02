@@ -49,6 +49,9 @@ ARCHITECTURE Behavioral OF multiplyMatrix IS
 	TYPE state2x3and3x2 IS (waiting, mul00, mul01, mul10, mul11);
 	SIGNAL mul2x3and3x2 : state2x3and3x2;
 	
+	TYPE state3x2and2x2 IS (waiting, mul00, mul01, mul10, mul11);
+	SIGNAL mul3x2and2x2 : state3x2and2x2;
+	
 	TYPE stateRead IS (lineA1, lineA2, lineA3, lineB1, lineB2);
 	SIGNAL control : stateRead;
 
@@ -65,7 +68,6 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 																clk => clkMult,
 																resultPort => tempResult,
 																readyPort => readyOperation);
-
 	-- READ INPUT
 	PROCESS(clkMult, readInput)
 	BEGIN
@@ -109,7 +111,9 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 				readyMultiply <= '0';
 				output <= (OTHERS => '0');
 			ELSE
+				----------------------------------------------------
 				-- 3x3 and 3x2
+				----------------------------------------------------
 				IF mutiplyType = "00" THEN
 					CASE mul3x3and3x2 IS
 						WHEN waiting =>
@@ -253,7 +257,9 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 							output(31 DOWNTO 16) <= result20;
 							output(15 DOWNTO 0) <= result21;
 					END CASE;
-				-- 2x3 and 3x2
+				----------------------------------------------------
+				-- 2x3 and 3x2: NOT OK! YOU HAVE TO ADAPT lineColumnOperation
+				----------------------------------------------------
 				ELSIF mutiplyType = "01" THEN
 					CASE mul2x3and3x2 IS
 						WHEN waiting =>
@@ -352,9 +358,107 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 								output(31 DOWNTO 16) <= (OTHERS => '0');
 							END IF;
 					END CASE;
-				-- 3x2 and 2x2
+				----------------------------------------------------
+				-- 3x2 and 2x2: oK
+				----------------------------------------------------
 				ELSIF mutiplyType = "10" THEN
-				ELSE
+				CASE mul3x2and2x2 IS
+						WHEN waiting =>
+							readyMultiply <= '0';
+							startOperation <= '0';
+							IF startMultiply = '1' THEN
+								-- Set state
+								mul3x2and2x2 <= mul00;
+								-- Set signals
+								startOperation <= '1';
+								-- Data path
+									-- Line: First
+								a00 <= inputOne(143 DOWNTO 128);
+								a01 <= inputOne(127 DOWNTO 112);
+								a02 <= inputOne(111 DOWNTO 96);
+									-- Column: First
+								b00 <= inputTwo(95 DOWNTO 80);
+								b01 <= inputTwo(63 DOWNTO 48);
+								b02 <= inputTwo(31 DOWNTO 16);
+							END IF;
+						WHEN mul00 =>
+							readyMultiply <= '0';
+							startOperation <= '0';
+							IF readyOperation = '1' THEN
+								-- Set state
+								mul3x2and2x2 <= mul01;
+								-- Output
+								result00 := tempResult;
+								-- Set signals
+								startOperation <= '1';
+								-- Data path
+									-- Line: First
+								a00 <= inputOne(143 DOWNTO 128);
+								a01 <= inputOne(127 DOWNTO 112);
+								a02 <= inputOne(111 DOWNTO 96);
+									-- Column: Second
+								b00 <= inputTwo(79 DOWNTO 64);
+								b01 <= inputTwo(47 DOWNTO 32);
+								b02 <= inputTwo(15 DOWNTO 0);
+							END IF;
+						WHEN mul01 =>
+							readyMultiply <= '0';
+							startOperation <= '0';
+							IF readyOperation = '1' THEN
+								-- Set state
+								mul3x2and2x2 <= mul10;
+								-- Output
+								result01 := tempResult;
+								-- Set signals
+								startOperation <= '1';
+								-- Data path
+									-- Line: Second
+								a00 <= inputOne(95 DOWNTO 80);
+								a01 <= inputOne(79 DOWNTO 64);
+								a02 <= inputOne(63 DOWNTO 48);
+									-- Column: First
+								b00 <= inputTwo(95 DOWNTO 80);
+								b01 <= inputTwo(63 DOWNTO 48);
+								b02 <= inputTwo(31 DOWNTO 16);
+							END IF;
+						WHEN mul10 =>
+							readyMultiply <= '0';
+							startOperation <= '0';
+							IF readyOperation = '1' THEN
+								-- Set state
+								mul3x2and2x2 <= mul11;
+								-- Output
+								result10 := tempResult;
+								-- Set signals
+								startOperation <= '1';
+								-- Data path
+									-- Line: Second
+								a00 <= inputOne(95 DOWNTO 80);
+								a01 <= inputOne(79 DOWNTO 64);
+								a02 <= inputOne(63 DOWNTO 48);
+									-- Column: Second
+								b00 <= inputTwo(79 DOWNTO 64);
+								b01 <= inputTwo(47 DOWNTO 32);
+								b02 <= inputTwo(15 DOWNTO 0);
+							END IF;
+						WHEN mul11 =>
+							readyMultiply <= '0';
+							startOperation <= '0';
+							IF readyOperation = '1' THEN
+								-- Set state
+								mul3x2and2x2 <= waiting;
+								-- Output
+								result11 := tempResult;
+								-- Set signals
+								readyMultiply <= '1';
+								-- Set output
+								output(95 DOWNTO 80) <= result00;
+								output(79 DOWNTO 64) <= result01;
+								output(63 DOWNTO 48) <= result10;
+								output(47 DOWNTO 32) <= result11;
+								output(31 DOWNTO 16) <= (OTHERS => '0');
+							END IF;
+					END CASE;
 				END IF;
 			END IF;
 		END IF;
