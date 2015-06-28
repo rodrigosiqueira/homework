@@ -1,0 +1,15 @@
+[Inputs]
+startPort
+resetPort
+numOperation
+clk
+=elementA1[15:0]=
+=elementA2[15:0]=
+=elementA3[15:0]=
+=elementB1[15:0]=
+=elementB2[15:0]=
+=elementB3[15:0]=
+[Outputs]
+readyPort
+=resultPort[15:0]=
+[BiDir]

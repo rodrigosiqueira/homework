@@ -20,6 +20,7 @@ ENTITY lineColumnOperation IS
 			elementB3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 			startPort : IN STD_LOGIC;
 			resetPort : IN STD_LOGIC;
+			numOperation : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
 			resultPort : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 			readyPort : OUT STD_LOGIC);
@@ -119,7 +120,11 @@ BEGIN
 							elementLine1 <= elementA3;
 							elementColumn1 <= elementB3;
 							-- Next state
-							presentState <= multiplicationSum;
+							IF numOperation = '1' THEN
+								presentState <= finalSum;
+							ELSE
+								presentState <= multiplicationSum;
+							END IF;
 						ELSE
 							presentState <= twoMultiplication;
 						END IF;

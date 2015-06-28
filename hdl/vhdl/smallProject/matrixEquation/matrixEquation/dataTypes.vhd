@@ -46,6 +46,7 @@ PACKAGE dataTypes IS
 				 elementB3 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 				 startPort : IN STD_LOGIC;
 				 resetPort : IN STD_LOGIC;
+				 numOperation : IN STD_LOGIC;
 				 clk : IN STD_LOGIC;
 				 resultPort : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 				 readyPort : OUT STD_LOGIC);

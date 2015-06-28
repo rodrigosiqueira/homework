@@ -40,6 +40,7 @@ ARCHITECTURE Behavioral OF multiplyMatrix IS
 	
 	SIGNAL tempResult : STD_LOGIC_VECTOR(15 DOWNTO 0);
 
+	SIGNAL numOperation : STD_LOGIC := '0';
 	SIGNAL startOperation : STD_LOGIC;
 	SIGNAL readyOperation : STD_LOGIC;
 
@@ -65,6 +66,7 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 																elementB3 => b02,
 																startPort => startOperation,
 																resetPort => resetMult,
+																numOperation => numOperation,
 																clk => clkMult,
 																resultPort => tempResult,
 																readyPort => readyOperation);
@@ -124,6 +126,7 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 								mul3x3and3x2 <= mul00;
 								-- Set signals
 								startOperation <= '1';
+								numOperation <= '1';
 								-- Data path
 									-- Line: First
 								a00 <= inputOne(143 DOWNTO 128);
@@ -258,7 +261,7 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 							output(15 DOWNTO 0) <= result21;
 					END CASE;
 				----------------------------------------------------
-				-- 2x3 and 3x2: NOT OK! YOU HAVE TO ADAPT lineColumnOperation
+				-- 2x3 and 3x2
 				----------------------------------------------------
 				ELSIF mutiplyType = "01" THEN
 					CASE mul2x3and3x2 IS
@@ -270,6 +273,7 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 								mul2x3and3x2 <= mul00;
 								-- Set signals
 								startOperation <= '1';
+								numOperation <= '0';
 								-- Data path
 									-- Line: First
 								a00 <= inputOne(143 DOWNTO 128);
@@ -359,7 +363,7 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 							END IF;
 					END CASE;
 				----------------------------------------------------
-				-- 3x2 and 2x2: oK
+				-- 3x2 and 2x2: NOT ok! You have to adapt lineColumn
 				----------------------------------------------------
 				ELSIF mutiplyType = "10" THEN
 				CASE mul3x2and2x2 IS
@@ -371,6 +375,7 @@ operationMatrix :	lineColumnOperation PORT MAP( elementA1 => a00,
 								mul3x2and2x2 <= mul00;
 								-- Set signals
 								startOperation <= '1';
+								numOperation <= '1';
 								-- Data path
 									-- Line: First
 								a00 <= inputOne(143 DOWNTO 128);
