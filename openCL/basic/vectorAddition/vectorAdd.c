@@ -37,6 +37,8 @@ int main()
   B = (int *)malloc(datasize);
   C = (int *)malloc(datasize);
 
+  puts ("After allocation");
+
   //Initialize the input data
   int i;
   for (i = 0; i < elements; i++)
@@ -45,6 +47,7 @@ int main()
     B[i] = i;
   }
 
+  puts ("After for");
   //Use this check the output of each API call
   cl_int status;
 
@@ -53,19 +56,23 @@ int main()
   /******************************************************************/
   //Retrieve the number of platforms
   cl_uint numPlatforms = 0;
+  puts ("Before get platform.");
   status = clGetPlatformIDs(0, NULL, &numPlatforms);
 
   //Allocate enough space for each platform
   cl_platform_id * platforms = NULL;
+  printf ("Total platform: %d\n", numPlatforms);
   platforms = (cl_platform_id *)malloc(numPlatforms * sizeof(cl_platform_id));
 
   //Fill in the platforms
+  puts ("Before fill platform");
   status = clGetPlatformIDs(numPlatforms, platforms, NULL);
 
   /******************************************************************/
   /* DEVICE ID */
   /******************************************************************/
   cl_uint numDevices = 0;
+  puts ("Before get devices");
   status = clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_ALL, 0,
                           NULL, &numDevices);
   //Alocate enough space for each device
@@ -73,46 +80,58 @@ int main()
   devices = (cl_device_id *) malloc(numDevices * sizeof(cl_device_id));
 
   //Fill in the devices
+  puts ("Before alloc get devices");
   status = clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_ALL,
                           numDevices, devices, NULL);
+  printf ("total devices: %d\n", numDevices);
+  printf ("devices: %p\n", devices);
   /******************************************************************/
   /* CONTEXT */
   /******************************************************************/
   cl_context context;
+  puts ("Before context");
   context = clCreateContext(NULL, numDevices, devices, NULL, NULL, &status);
 
   /******************************************************************/
   /* COMMAND QUEUE */
   /******************************************************************/
   cl_command_queue cmdQueue;
+  puts ("Before clCreateCommandQueue");
   cmdQueue = clCreateCommandQueue (context, devices[0], 0, &status);
 
   /******************************************************************/
   /* BUFFER OBJECT */
   /******************************************************************/
   cl_mem bufA;
+  puts ("Before clCreateBuffer A.");
   bufA = clCreateBuffer(context, CL_MEM_READ_ONLY, datasize, NULL, &status);
 
   cl_mem bufB;
+  puts ("Before clCreateBuffer A.");
   bufB = clCreateBuffer(context, CL_MEM_READ_ONLY, datasize, NULL, &status);
 
   // Create a buffer object that will hold the output
   cl_mem bufC;
+  puts ("Before clCreateBuffer A.");
   bufC = clCreateBuffer(context, CL_MEM_WRITE_ONLY, datasize, NULL, &status);
 
   //Write input array A to the device bufferA
+  puts ("Before clEnqueueWriteBuffer A.");
   status = clEnqueueWriteBuffer(cmdQueue, bufA, CL_FALSE, 0, 
                                 datasize, A, 0, NULL, NULL);
 
   //Write input array B to the device bufferB
+  puts ("Before clEnqueueWriteBuffer B.");
   status = clEnqueueWriteBuffer(cmdQueue, bufB, CL_FALSE, 0,
                                datasize, B, 0, NULL, NULL);
 
   /******************************************************************/
   /*Create a program with source code*/
   /******************************************************************/
+  puts ("Before clCreateProgramWithSource.");
   cl_program program = clCreateProgramWithSource(context, 1,
                         (const char **)&programSource, NULL, &status);
+
   status = clBuildProgram(program, numDevices, devices, NULL, NULL, NULL);
 
   //Create the vector addition kernel
