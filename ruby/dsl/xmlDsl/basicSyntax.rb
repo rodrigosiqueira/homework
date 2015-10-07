@@ -1,8 +1,10 @@
 require_relative 'xmlDsl'
 
 xml.person :name => 'Xpto "Silva" Stewart' do
-  book do
-    'Godel, Escher, Bach'
+  book :name => 'Godel, Escher, Bach' do
+    title do
+      'I am inside of this tag'
+    end
   end
 
   book do
@@ -11,6 +13,10 @@ xml.person :name => 'Xpto "Silva" Stewart' do
 
   book do
     'The fabric'
+  end
+
+  info do
+    'my test'
   end
 
   book do
