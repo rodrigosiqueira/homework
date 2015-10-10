@@ -19,7 +19,7 @@ module XML
         @identIncrement = ' ' * pBaseSpaceIdent
       end
 
-      def method_missing(pTagName, *pTagParameters, &block)
+      def method_missing(pTagName, *pTagParameters, &pBlock)
         @tag += "\n" unless @tag.strip == ''
         currentTagName = "#{@ident}<#{pTagName.to_s}"
         @tag << currentTagName
@@ -31,17 +31,23 @@ module XML
         if block_given?
           @tag << ">"
           incrementIdentation
-          result = instance_eval(&block)
-          result = "\n#{@ident}" + result + "\n" unless result == ''
-          @content = result if result
-          @tag << @content
+          result = instance_eval(&pBlock)
+          if result != '' && result.is_a?(String)
+            updateTag(result)
+          end
+
           decrementIdent
           @tag << "#{@ident}</#{pTagName.to_s}>\n"
+          @tag.squeeze!("\n")
         else
           @tag << "/>\n"
-          decrementIdent
         end
           @content = ''
+      end
+
+      def updateTag(pNewContent)
+        @content = "\n#{@ident}" + pNewContent + "\n"
+        @tag << @content
       end
 
       def handleArguments(pTagParameters)
