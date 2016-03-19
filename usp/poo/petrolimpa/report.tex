@@ -1,0 +1,74 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{pgf}
+\pgfdeclareimage[height=1cm]{myimage}{p1_q1.png}
+\usepackage{listings}
+
+%----------------- CONFIGURAÇÃO PARA OS COMANDOS -----------------------
+\lstset
+{
+  basicstyle = \footnotesize, 		% Tamanho da fonte do código
+  %numbers = left, 			% Posição da numeração das linhas
+  %numberstyle = \tiny\color{blue}, 	% Estilo da numeração de linhas
+  %stepnumber = 1, 			% Numeração das linhas ocorre a cada quantas linhas?
+  %numbersep = 10pt, 			% Distância entre a numeração das linhas e o código
+  backgroundcolor = \color{white}, 	% Cor de fundo
+  showspaces = false, 			% Exibe espaços com um sublinhado
+  showstringspaces = false, 		% Sublinha espaços em Strings
+  showtabs = false, 			% Exibe tabulação com um sublinhado
+  frame = single, 			% Envolve o código com uma moldura, pode ser single ou trBL
+  rulecolor = \color{black}, 		% Cor da moldura
+  tabsize = 2, 				% Configura tabulação em x espaços
+  captionpos = b, 			% Posição do título pode ser t (top) ou b (bottom)
+  breaklines = true, 			% Configura quebra de linha automática
+  breakatwhitespace= false, 		% Configura quebra de linha
+  title = \lstname, 			% Exibe o nome do arquivo incluido
+  %caption = \lstname, % Também é possível usar caption no lugar de title
+  keywordstyle = \color{blue}, 		% Estilo das palavras chaves
+  commentstyle = \color{dkgreen}, 	% Estilo dos Comentários
+  stringstyle = \color{mauve}, 		% Estilo de Strings
+  escapeinside = {\%*}{*)}, 		% Permite adicionar comandos LaTeX dentro do seu código
+  morekeywords     ={*,...} 		% Se quiser adicionar mais palavras-chave
+}
+
+%------------------------------------------------------------------------
+%------------------------- CAPA -----------------------------------------
+%------------------------------------------------------------------------
+	\title{Projeto petrolimpa}
+  \author{Leonardo Macedo, Rodrigo Siqueira}
+
+%------------------------------------------------------------------------
+%------------------------- ÍNDICE E DEMAIS ITENS ------------------------
+%------------------------------------------------------------------------
+	\begin{document}
+ 	\maketitle
+ 	\titlepage
+ 	\tableofcontents
+
+%------------------------------------------------------------------------
+%------------------------------- Visão geral ----------------------------
+%------------------------------------------------------------------------
+\newpage
+\section{Visão geral}
+TODO
+
+\newpage
+%------------------------------------------------------------------------
+%---------------- Diagrama de caso de uso -------------------------------
+%------------------------------------------------------------------------
+\section{Diagrama de Caso de Uso}
+	TODO
+
+%------------------------------------------------------------------------ 
+%--------------- Diagrama de classes ------------------------------------
+%------------------------------------------------------------------------
+\newpage
+\section{Diagrama de Classes}
+	TODO
+
+\newpage
+\section{Diagrama de implantação}
+TODO
+
+\end{document}
