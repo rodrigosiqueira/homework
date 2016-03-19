@@ -1,0 +1,37 @@
+Sistema PetroLimpa
+
+Você foi contratado por uma grande empresa petrolífera para projetar um sistema
+de combate à corrupção interna.
+
+O sistema deve executar de forma distribuída nos 
+
+	-> 5 escritórios da empresa espalhados pelo país
+	-> coletando dados dos 1.000 postos de gasolina, 20 plataformas de petróleo,
+		30 centros de distribuição de combustível e 10 refinarias.
+
+Não há um único ponto de centralização do sistema, os 5 escritórios
+são independentes.
+
+O sistema utilizará um motor de inferência. Utilizando técnicas de mineração
+de dados e IA para localizar suspeitas de fraudes que serão
+	-> postadas publicamente, diariamente no web site da empresa.
+
+Cada compra da empresa (que acontecem a uma taxa de milhares por dia,
+espalhadas pelo país) 
+	Compras:
+		-> pode ser com licitação ou dispensa de licitação. 
+		-> Além disso, cada compra pode ser de serviços, de equipamentos
+			permanentes ou de insumos.
+		-> Finalmente, cada compra pode ser via importação ou no mercado interno.
+
+Para cada tipo diferente de compra, os algoritmos de detecção de fraudes são
+diferentes, i.e., --> personalizados para cada caso <--.
+
+Além disso, há algoritmos
+próprios para detectar fraudes analisando-se a totalização dos gastos de cada
+unidade (posto, plataforma, centro de distribuição ou refinaria.
+
+Cada compra deve ser analisada por exatamente 3 escritórios diferentes.
+
+Utilize o link Enviar arquivos (no topo desta página) para enviar sua solução.
+Utilize preferencialmente os formatos PDF ou PNG. 
