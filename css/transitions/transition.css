@@ -1,0 +1,44 @@
+a {
+  color: white;
+  background: gray;
+  -webkit-transition: 0.5s linear;
+  -moz-transition: 0.5s linear;
+}
+
+a:hover {
+  color: black;
+  background: red;
+  -webkit-transition: 0.5s linear;
+  -moz-transition: 0.5s linear;
+}
+
+@-webkit-keyframes rodaroda {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rodaroda {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+div {
+  width: 50px;
+  height: 50px;
+  margin: 30% auto 0;
+  background: black;
+
+  -moz-animation-name: rodaroda;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+}

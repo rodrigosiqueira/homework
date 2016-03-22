@@ -1,0 +1,17 @@
+div {
+  width: 500px;
+  height: 200px;
+  background-color: #FFF;
+
+  /*Image, in case of browser not accept it.*/
+  background-image: url(images/gradient.png);
+
+  /*Firefox 3.6+*/
+  background-image: -moz-linear-gradient(green, red);
+
+  /*Safari 5.1+, Chrome 10+*/
+  background-image: -webkit-linear-gradient(green, red);
+
+  /*Opera 11.10+*/
+  background-image: -o-linear-gradient(green, red);
+}

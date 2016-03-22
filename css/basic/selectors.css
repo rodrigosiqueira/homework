@@ -1,0 +1,11 @@
+h2 + p {
+  color: red;
+}
+
+strong, em, span {
+  color: blue;
+}
+
+div p strong a {
+  color: green;
+}

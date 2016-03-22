@@ -1,0 +1,8 @@
+a {
+  border-style: solid;
+  border-bottom-width: 2px;
+  border-image: url("../img/assets/border-image.png") 0 0 2 2 stretch;
+  -moz-border-image: url(redborder.png) 30 stretch;
+  position: fixed;
+  z-index: 999;
+}
