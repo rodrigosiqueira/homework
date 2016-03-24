@@ -25,6 +25,11 @@ p
   font-size: 15px;
 }
 
+p::first-letter
+{
+  font-size: 150%;
+}
+
 .content-box
 {
   position: relative;
@@ -44,8 +49,13 @@ p
   margin: 20px;
   bottom: 10px;
   background: white;
-  display: inline-block;
+  float: left;
   text-align: left;
+}
+
+.after-box
+{
+    clear: left;
 }
 
 .content-box img
@@ -67,11 +77,13 @@ p
   .half-content-box
   {
     position: relative;
+    width: 100%;
     top: 10px;
     margin: 20px;
     bottom: 10px;
     background: white;
     font-size: 15px;
     text-align: left;
+    float: left;
   }
 }
