@@ -1,0 +1,18 @@
+<h1> Highlight code app </h1>
+
+<h3> List of highlighted code in the system </h3>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Language</th>
+  </tr>
+
+  <% @snippet.each do |snippet| %>
+    <tr>
+      <td> snippet.id </td>
+      <td> snippet.language </td>
+      <td><%= link_to 'Show', snippets_path(snippet)%></td>
+    </tr>
+  <% end %>
+</table>

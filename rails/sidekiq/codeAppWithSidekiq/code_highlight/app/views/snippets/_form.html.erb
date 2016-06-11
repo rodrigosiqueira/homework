@@ -1,0 +1,29 @@
+<%= form_for @snippet do |f| %>
+
+  <% if @snippet.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@snippet.errors.count, "error") %>
+          prohibited this article from being save:
+      </h2>
+      <ul>
+        <% @snippet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :language  %>
+    <%= f.select :language, options_for_select([["Ruby", "ruby"], ["Python", "python"]])%>
+  </p>
+
+  <p>
+    <%= f.label :code %> <br>
+    <%= f.text_area :plain_code, rows: 15, cols: 50 %>
+  </p>
+
+  <%= f.submit 'Save' %>
+
+<% end %>
