@@ -1,1 +1,20 @@
-<h1>'me'</h2>
+<h1> Code </h1>
+
+<p> Original Code </p>
+
+<hr>
+
+<%= @snippet.plain_code  %>
+
+<hr>
+
+<p> Highlighted code </p>
+<hr>
+<% if @snippet.highlighted_code.present? %>
+  <%= raw @snippet.highlighted_code %>
+<% else %>
+  <h3>Not ready yet :( </h3>
+<% end %>
+<hr>
+
+<%= link_to 'List', snippets_path %>

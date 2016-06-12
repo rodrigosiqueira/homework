@@ -8,11 +8,14 @@
     <th>Language</th>
   </tr>
 
-  <% @snippet.each do |snippet| %>
+  <% @snippet.each do |element| %>
     <tr>
-      <td> snippet.id </td>
-      <td> snippet.language </td>
-      <td><%= link_to 'Show', snippets_path(snippet)%></td>
+      <td> <%= element.id %> </td>
+      <td> <%= element.language %> </td>
+      <td> <%= link_to 'Show', snippet_path(element) %> </td>
     </tr>
   <% end %>
 </table>
+
+<%= link_to 'New code', new_snippet_path %>
+<%= link_to 'Home', controller: 'welcome' %>
