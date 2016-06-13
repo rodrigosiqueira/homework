@@ -2,6 +2,7 @@ function xpto()
 {
   echo "*: $*"
   echo "@: $@"
+  echo "?: $?"
   echo "#: $#"
   echo "-: $-"
   echo "$: $$"
@@ -10,3 +11,5 @@ function xpto()
 }
 
 xpto 1 2 3
+echo '------------------------------'
+xpto this is me
