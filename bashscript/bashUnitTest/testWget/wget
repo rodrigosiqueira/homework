@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -z "$TEST_WGET_FAILURE" ]
+then
+  echo "Downloading $1"
+else
+  echo "Failed to download file"
+  exit 1
+fi
