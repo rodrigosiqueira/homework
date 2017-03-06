@@ -216,6 +216,10 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
+#Apache module
+*.slo
+*.lai
+
 #Device drivers
 operatingSystemProject/**/*.cmd
 operatingSystemProject/**/*.ko
