@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SciFiJukebox</string>
+    <string name="description_album">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo
+      imperdiet, sagittis odio fermentum, tempor nisl. Vivamus vel mi eu mauris
+      tincidunt posuere. Phasellus dapibus magna sem, quis ultrices diam facilisis
+      eu.
+    </string>
+
+    <string name="description_music">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo
+      imperdiet, sagittis odio fermentum, tempor nisl. Vivamus vel mi eu mauris
+      tincidunt posuere. Phasellus dapibus magna sem, quis ultrices diam facilisis
+      eu.
+    </string>
+
+    <string name="start_description">
+      INTO THE UNKNOWN
+    </string>
+
+    <string name="start_description_subtitle">
+      MUSIC
+    </string>
+
+    <string name="click_to_start">
+      CLICK TO START
+    </string>
+
+    <string name="credits">
+      CREDITS
+    </string>
+
+    <string-array name="about">
+      <item> Developer: Xpto1 </item>
+      <item> Developer: Xpto2 </item>
+      <item> Icons: Xpto1 </item>
+    </string-array>
+
+</resources>
