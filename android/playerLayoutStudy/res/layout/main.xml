@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="40dp"
+    android:background="#000000"
+    android:keepScreenOn="true">
+
+  <LinearLayout
+    android:layout_weight="1"
+    android:layout_height="match_parent"
+    android:layout_width="0dp"
+    android:paddingLeft="20dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/genre_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingBottom="50dp"
+      android:textColor="#FFFFFF"
+      android:textSize="50sp"
+      android:textStyle="bold"
+      android:text="KRAUT ROCK"
+    />
+
+    <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingRight="30dp"
+      android:scrollbars="none">
+
+      <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:text="@string/genre_description"
+      />
+
+    </ScrollView>
+
+  </LinearLayout>
+
+  <View
+    android:layout_width="1dp"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"/>
+
+  <LinearLayout
+    android:layout_weight="1"
+    android:layout_height="match_parent"
+    android:layout_width="0dp"
+    android:paddingLeft="20dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:padding="10dp">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="SELECT A TRACK"
+      />
+
+      <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:textSize="20sp"
+        android:text="BACK"
+      />
+
+    </RelativeLayout>
+
+    <include layout="@layout/player"/>
+
+    <ListView
+      android:id="@android:id/list"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:drawSelectorOnTop="false"
+    />
+
+  </LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">PlayerLayout</string>
+  <string name="genre_description">
+     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+lobortis elit sagittis sem dapibus tincidunt. Aenean non vestibulum metus.
+Aenean ullamcorper viverra massa. Sed mauris erat, tincidunt et eleifend vitae,
+molestie sed ante. Duis a placerat ante. Integer at mattis dolor. Proin
+sagittis tempus odio non ornare. Suspendisse eu dictum dolor. Mauris lobortis
+enim vel gravida elementum.
+ 
+     Aliquam libero ex, mollis vel odio vel, porttitor fringilla ante. In
+viverra sed erat in ornare. Nulla eu faucibus quam. Morbi imperdiet lorem nec
+leo scelerisque congue. Cras quis nunc erat. Proin ex ante, iaculis eu vehicula
+vitae, ultricies sit amet nisl. Maecenas felis arcu, commodo eget ligula ut,
+pharetra ultrices orci. Fusce ex felis, aliquet ut tristique non, consectetur
+vitae ligula. Praesent fermentum laoreet pellentesque. Aenean hendrerit turpis
+eu gravida ultrices. Nam euismod turpis dui, non consequat nisl sollicitudin
+sit amet. 
+  </string>
+
+  <string-array name="numbers">
+    <item>one</item>
+    <item>two</item>
+    <item>three</item>
+    <item>four</item>
+    <item>five</item>
+    <item>six</item>
+    <item>seven</item>
+    <item>eight</item>
+    <item>nine</item>
+    <item>ten</item>
+  </string-array>
+</resources>
