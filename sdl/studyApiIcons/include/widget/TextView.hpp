@@ -28,9 +28,9 @@ class TextView : public Widget
     bool loadFont(std::string pPath, unsigned int pSize);
     void setText(std::string pText);
 
-    virtual bool render();
-    virtual void setSize(int pWidth, int pHeight);
-    virtual void clean();
+    bool render();
+    void setSize(int pWidth, int pHeight);
+    void clean();
 
   private:
 

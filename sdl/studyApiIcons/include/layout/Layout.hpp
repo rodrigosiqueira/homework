@@ -5,13 +5,15 @@
 #include <iostream>
 #include <vector>
 
+#include <SDL2/SDL.h>
+
 #include "widget/Widget.hpp"
 
 class Layout
 {
   public:
 
-    Layout();
+    Layout(SDL_Renderer * pRenderer);
     ~Layout();
 
     bool add(Widget * pWidget);
@@ -19,6 +21,7 @@ class Layout
 
   private:
 
+    SDL_Renderer * renderer;
     std::vector<Widget *> widgets;
 };
 

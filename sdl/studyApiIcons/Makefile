@@ -10,7 +10,7 @@ SDLFLAGS := `sdl2-config --cflags --libs` -lSDL2_ttf -lSDL_image
 CXX := g++
 #CXXFLAGS := -g -std=c++11 -Wall -pedantic -Weffc++
 CXXFLAGS := -g -std=c++11 -Wall -pedantic
-GAMEKIOSKFLAGS := $(SDLFLAGS) -I./$(INCDIR)/window -I./$(INCDIR) -I./$(INCDIR)/widget -I./$(INCDIR)/layout
+GAMEKIOSKFLAGS := $(SDLFLAGS) -I./$(INCDIR)/window -I./$(INCDIR) -I./$(INCDIR)/widget -I./$(INCDIR)/layout -I ./$(INCDIR)/util
 
 program_OBJS := $(foreach SUBDIRS, -I./, $(SUBDIRS))
 
@@ -27,5 +27,5 @@ prepare:
 	cp -r fonts/ bin/
 
 clean:
-	mv $(BINDIR)* /tmp
-	mv $(OBJDIR)* /tmp
+	rm -rf $(BINDIR)/
+	rm -rf $(OBJDIR)/

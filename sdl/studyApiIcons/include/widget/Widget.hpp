@@ -7,7 +7,7 @@ class Widget
 {
   public:
 
-    virtual void setSize(int pWidth, int pHeight) const = 0;
+    virtual void setSize(int pWidth, int pHeight) = 0;
     void setWidth(int pWidth);
     void setHeight(int pHeight);
     void setPosition(int pX, int pY);
@@ -22,8 +22,8 @@ class Widget
 
     SDL_Texture * getTexture();
 
-    virtual bool render() const = 0;
-    virtual void clean() const = 0;
+    virtual bool render() = 0;
+    virtual void clean() = 0;
 
   protected:
 

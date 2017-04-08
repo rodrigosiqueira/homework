@@ -6,6 +6,7 @@
 #include <SDL_image.h>
 
 #include "Window.hpp"
+#include "Log.hpp"
 
 //TODO: SHOULD BE TEMPORARY
 #define SCREEN_HEIGHT 640
@@ -40,6 +41,7 @@ int Window::initialize()
     std::cout << "Without SDL, it is not possible to initialize" << std::endl;
     return status;
   }
+
   this->window = SDL_CreateWindow(this->windowTitle.c_str(),
                                   SDL_WINDOWPOS_UNDEFINED,
                                   SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH,
@@ -57,7 +59,14 @@ int Window::initialize()
     return -1;
   }
 
-  SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+  SDL_Rect rect;
+  rect.x = rect.y = 0;
+  rect.w = SCREEN_WIDTH;
+  rect.h = SCREEN_HEIGHT;
+
+  Log::d("Drawing a dummy rect");
+  SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 255);
+  SDL_RenderFillRect(this->renderer, &rect);
 
   return status;
 }
@@ -89,4 +98,9 @@ int Window::initializeSDL()
 int Window::updatedScreen(int pScreenId)
 {
   return 0;
+}
+
+SDL_Renderer * Window::getRenderer()
+{
+  return this->renderer;
 }

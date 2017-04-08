@@ -6,8 +6,9 @@
 
 #include "Widget.hpp"
 #include "Layout.hpp"
+#include "Log.hpp"
 
-Layout::Layout()
+Layout::Layout(SDL_Renderer * pRenderer)
 {
   //TODO
 }
@@ -21,7 +22,7 @@ bool Layout::add(Widget * pWidget)
 {
   if (!pWidget)
   {
-    std::cout << "Parameter is null" << std::endl;
+    Log::w("Parameter is null");
     return false;
   }
 
@@ -34,6 +35,7 @@ int Layout::update()
 {
   for (auto item : this->widgets)
   {
+Log::d("Rendering item");
     item->render();
   }
 

@@ -6,6 +6,7 @@
 
 #include "Widget.hpp"
 #include "TextView.hpp"
+#include "Log.hpp"
 
 TextView::TextView(SDL_Renderer * pRenderer)
 {
@@ -54,7 +55,9 @@ bool TextView::loadFont(std::string pPath, unsigned int pSize)
   this->font = TTF_OpenFont(pPath.c_str(), pSize);
   if (!this->font)
   {
-    std::cout << "Error on font load: " << TTF_GetError() << std::endl;
+    Log::e("Error on font load: ");
+    Log::e(TTF_GetError());
+
     return false;
   }
   return true;
@@ -64,7 +67,7 @@ void TextView::setText(std::string pText)
 {
   if (!this->font)
   {
-    std::cout << "Font is not set, cannot create font." << std::endl;
+    Log::e("Font is not set, cannot create font");
     return;
   }
 
@@ -72,13 +75,14 @@ void TextView::setText(std::string pText)
                                                    this->color);
   if (!textSurface)
   {
-    std::cout << "Cannot convert text to surface." << std::endl;
+    Log::e("Cannot convert text to surface.");
     return;
   }
 
   this->texture = this->surfaceToTexture(textSurface);
   if (!this->texture)
   {
+    Log::e("Error when trying to convert surface to texture");
     return;
   }
 
@@ -87,9 +91,10 @@ void TextView::setText(std::string pText)
 
 bool TextView::render()
 {
+  Log::d("TextView::render");
   if (!this->renderer || !this->texture)
   {
-    std::cout << "Render or texture inside TextView is null" << std::endl;
+    Log::e("Render or texture inside TextView is null");
     return false;
   }
 

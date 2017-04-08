@@ -18,6 +18,8 @@ class Window
 
     int updatedScreen(int pScreenId = 0);
 
+    SDL_Renderer * getRenderer();
+
   private:
 
     SDL_Window * window;
